@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Property.Models.Account>
+
+@{
+    ViewBag.Title = "Advisor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Advisor</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            Favorite
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    var list = ViewBag.MyAdvisor;
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @if (list.Contains(item.ID))
+            {
+                <a href="@Url.Action("Remove_Advisor","Home",new { id=item.ID})">
+                    <i class="fa fa-heart" style="font-size:30px;color:red"></i>
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("Add_Advisor","Home",new { id=item.ID})">
+                    <i class="fa fa-heart-o" style="font-size:30px;"></i>
+                </a>
+            }
+
+
+        </td>
+    </tr>
+}
+
+</table>

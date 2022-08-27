@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6bbbd755a7141e2bacca1b025707d12" Name="Diagram1">
+        <EntityTypeShape EntityType="propertyModel.aacount" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="propertyModel.company" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="propertyModel.offer" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="propertyModel.property" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="propertyModel.rating" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="propertyModel.refer" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="propertyModel.referproperty" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="propertyModel.FK_company_aacount" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_offer_aacount" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_property_aacount" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_rating_aacount" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_refer_aacount" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_referproperty_aacount" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_offer_property" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_rating_property" ManuallyRouted="false" />
+        <AssociationConnector Association="propertyModel.FK_referproperty_property" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

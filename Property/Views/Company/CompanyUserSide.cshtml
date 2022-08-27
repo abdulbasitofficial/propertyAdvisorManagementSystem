@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Property.Models.Company>
+
+@{
+    ViewBag.Title = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center">Company</h2>
+<div class="row">
+    
+
+
+        @foreach (var item in Model)
+        {
+            String img64 = Convert.ToBase64String(item.Image);
+            String img64Url = string.Format("data:image/" + item.Image_Type + ";base64,{0}", img64);
+    <div class="col-4">
+        <a href="@Url.Action("PropertyCompany","Home",new { id=item.ID})">
+            <table style="margin-left:30px;">
+                <tr>
+                    <td>
+                        <img src="@img64Url" style="width:100px;height:100px;border-radius:10px;border:solid;margin-top:20px;" />
+                    </td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td>
+                        <h2>@item.Name</h2>
+                        <span class="post">
+                            @foreach (var file in ViewBag.StartAverage)
+                            {
+                                if (item.ID == file.ID && file.Stars == 1)
+                                {
+                                    float stars = file.StarsNumber / file.TotalUsers;
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+
+                                    <i>(@stars)</i>
+                                }
+                                else if (item.ID == file.ID && file.Stars == 2)
+                                {
+                                    float stars = file.StarsNumber / file.TotalUsers;
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i>(@stars)</i>
+                                }
+                                else if (item.ID == file.ID && file.Stars == 3)
+                                {
+                                    float stars = file.StarsNumber / file.TotalUsers;
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i>(@stars)</i>
+                                }
+                                else if (item.ID == file.ID && file.Stars == 4)
+                                {
+                                    float stars = file.StarsNumber / file.TotalUsers;
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                    <i>(@stars)</i>
+                                }
+                                else if (item.ID == file.ID && file.Stars == 5)
+                                {
+                                    float stars = file.StarsNumber / file.TotalUsers;
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                    <i>(@stars)</i>
+                                }
+
+
+                            }
+
+                        </span>
+
+                    </td>
+
+                </tr>
+            </table>
+        </a>
+    </div>
+        }
+</div>

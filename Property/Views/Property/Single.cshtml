@@ -1,0 +1,209 @@
+﻿@model Property.Models.PropertyClass
+
+@{
+    ViewBag.Title = "Single";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="agent-info">
+    <div class="row">
+        <div class="col-md-6 column">
+            @{
+                String img64 = Convert.ToBase64String(Model.Image);
+                String img64Url = string.Format("data:image/" + Model.Image_Type + ";base64,{0}", img64);
+                <img src="@img64Url" class="img-fluid w-100 radius-image" alt="" style="width:300px;height:350px;">
+            }
+            @if (Session["Email"] != null)
+            {
+           foreach (var file in ViewBag.Company)
+            {
+                if (file.ID == Model.Company)
+                {
+                    String img6 = Convert.ToBase64String(file.Image);
+                    String img6Url = string.Format("data:image/" + file.Image_Type + ";base64,{0}", img6);
+
+                    <table style="margin-left:30px;">
+                        <tr>
+                            <td>
+                                <img src="@img6Url" style="width:100px;height:100px;border-radius:10px;border:solid;margin-top:20px;" />
+                            </td>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                            <td>
+                                <h3>@file.Name</h3>
+                                <span class="post">
+                                   
+                                        @if ( ViewBag.Rated == 1)
+                                        {
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 1, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 2, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 3, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 4, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 5, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                        }
+                                        else if ( ViewBag.Rated == 2)
+                                        {
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 1, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 2, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 3, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 4, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 5, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                        }
+                                        else if (  ViewBag.Rated == 3)
+                                        {
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 1, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 2, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 3, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 4, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 5, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                        }
+                                        else if ( ViewBag.Rated == 4)
+                                        {
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 1, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 2, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 3, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 4, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 5, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                        }
+                                        else if ( ViewBag.Rated == 5)
+                                        {
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 1, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 2, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 3, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 4, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 5, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:orange;font-size:25px"></i>
+                                            </a>
+                                        }
+                                        else if ( ViewBag.Rated == 0)
+                                        {
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 1, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 2, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 3, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 4, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                            <a href="@Url.Action("Rating", "Property", new { id = file.ID, star = 5, pid = Model.ID })">
+                                                <i class="fa fa-star" style="color:black;font-size:25px"></i>
+                                            </a>
+                                        }
+                                </span>
+                                <br />
+                                Rating Now
+                            </td>
+
+                        </tr>
+                    </table>
+                }
+
+
+
+            }
+
+
+            }
+        </div>
+        
+        <div class="col-md-6 column align-self mt-md-0 mt-4">
+            <h4 style="color:green">@ViewBag.Message</h4>
+            @if (Session["Email"] != null)
+            {
+                <form action="@Url.Action("MakeOffer", "Property")" method="post">
+                    <input type="hidden" name="id" value="@Model.ID" />
+                    <input type="number" name="offer" required />
+                    <input type="submit" value="Make Offer" class="btn btn-danger" />
+                </form>
+            }
+
+            <h5 class="user_position">Owner: @Model.OwnerName <br />Contact: @Model.Contact</h5>
+            <h4 class="user_title agent">
+                <a href="#"><b>@Model.Marla</b> Marla <b>@Model.Type</b> At  <b>@Model.Location</a>
+            </h4>
+            <div class="team-info my-4">
+                <p>Rooms : @Model.Bed_Room</p>
+                <p>Baths : @Model.Wash_Room</p>
+                @{
+                    int price = Model.Price / 100000;
+                }
+                <p>Price : @price Lac</p>
+            </div>
+            @if (Session["Email"] != null)
+            {
+                if (Session["Type"].Equals("Advisor"))
+                {
+                    <form action="@Url.Action("Refer","Property")" method="post">
+                        <ul class="social">
+                            <li>
+                                <input type="hidden" name="id" value="@Model.ID" />
+                            </li>
+                            <li>
+                                <input type="number" name="price" />
+                            </li>
+                            <li>
+                                <input type="submit" value="Refer To My All Buyers" class="btn btn-primary" />
+                            </li>
+
+                            @*<li><a href="@Url.Action("Refer","Property", new { id=Model.ID})" class="btn btn-primary"><span>Refer To My All Buyers</span></a></li>*@
+
+                        </ul>
+                    </form>
+                    
+                }
+
+            }
+        </div>
+    </div>
+</div>

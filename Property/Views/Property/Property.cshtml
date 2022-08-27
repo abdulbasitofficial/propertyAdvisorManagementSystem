@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Property.Models.PropertyClass>
+
+@{
+    ViewBag.Title = "Property";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center">Property</h1>
+
+<p>
+    <a href="@Url.Action("Add_Property","Property")"class="btn btn-primary">
+        Add Property
+    </a>
+</p>
+@if (Model.Count()>0)
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bed_Room)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Wash_Room)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        String img64 = Convert.ToBase64String(item.Image);
+        String img64Url = string.Format("data:image/" + item.Image_Type + ";base64,{0}", img64);
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bed_Room)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wash_Room)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marla)
+            </td>
+            <td>
+                <img src="@img64Url" style="width:70px;height:70px;" />
+            </td>
+        </tr>
+    }
+
+</table>
+}
+else
+{
+    <h3>No Property Registed in Your End</h3>
+}
+

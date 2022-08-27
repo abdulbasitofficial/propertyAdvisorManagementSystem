@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="propertyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="aacount">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="account_contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="account_email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="account_password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="account_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="account_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="companies" Relationship="Self.FK_company_aacount" FromRole="aacount" ToRole="company" />
+    <NavigationProperty Name="offers" Relationship="Self.FK_offer_aacount" FromRole="aacount" ToRole="offer" />
+    <NavigationProperty Name="properties" Relationship="Self.FK_property_aacount" FromRole="aacount" ToRole="property" />
+    <NavigationProperty Name="ratings" Relationship="Self.FK_rating_aacount" FromRole="aacount" ToRole="rating" />
+    <NavigationProperty Name="refers" Relationship="Self.FK_refer_aacount" FromRole="aacount" ToRole="refer" />
+    <NavigationProperty Name="referproperties" Relationship="Self.FK_referproperty_aacount" FromRole="aacount" ToRole="referproperty" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="company_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="company_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="company_image_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="account_id" Type="Int32" />
+    <NavigationProperty Name="aacount" Relationship="Self.FK_company_aacount" FromRole="company" ToRole="aacount" />
+  </EntityType>
+  <EntityType Name="offer">
+    <Key>
+      <PropertyRef Name="offer_id" />
+    </Key>
+    <Property Name="offer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_id" Type="Int32" />
+    <Property Name="property_id" Type="Int32" />
+    <Property Name="offer_price" Type="Int32" />
+    <NavigationProperty Name="aacount" Relationship="Self.FK_offer_aacount" FromRole="offer" ToRole="aacount" />
+    <NavigationProperty Name="property" Relationship="Self.FK_offer_property" FromRole="offer" ToRole="property" />
+  </EntityType>
+  <EntityType Name="property">
+    <Key>
+      <PropertyRef Name="property_id" />
+    </Key>
+    <Property Name="property_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="property_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="property_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="property_price" Type="Int32" />
+    <Property Name="property_bed" Type="Int32" />
+    <Property Name="property_washroom" Type="Int32" />
+    <Property Name="property_size" Type="Int32" />
+    <Property Name="account_id" Type="Int32" />
+    <Property Name="property_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="property_image_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="company_id" Type="Int32" />
+    <NavigationProperty Name="aacount" Relationship="Self.FK_property_aacount" FromRole="property" ToRole="aacount" />
+    <NavigationProperty Name="offers" Relationship="Self.FK_offer_property" FromRole="property" ToRole="offer" />
+    <NavigationProperty Name="ratings" Relationship="Self.FK_rating_property" FromRole="property" ToRole="rating" />
+    <NavigationProperty Name="referproperties" Relationship="Self.FK_referproperty_property" FromRole="property" ToRole="referproperty" />
+  </EntityType>
+  <EntityType Name="rating">
+    <Key>
+      <PropertyRef Name="rating_id" />
+    </Key>
+    <Property Name="rating_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_id" Type="Int32" />
+    <Property Name="property_id" Type="Int32" />
+    <Property Name="stars" Type="Int32" />
+    <NavigationProperty Name="aacount" Relationship="Self.FK_rating_aacount" FromRole="rating" ToRole="aacount" />
+    <NavigationProperty Name="property" Relationship="Self.FK_rating_property" FromRole="rating" ToRole="property" />
+  </EntityType>
+  <EntityType Name="refer">
+    <Key>
+      <PropertyRef Name="refer_id" />
+    </Key>
+    <Property Name="refer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="advisor_id" Type="Int32" />
+    <Property Name="account_id" Type="Int32" />
+    <Property Name="property_id" Type="Int32" />
+    <NavigationProperty Name="aacount" Relationship="Self.FK_refer_aacount" FromRole="refer" ToRole="aacount" />
+  </EntityType>
+  <EntityType Name="referproperty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="account_id" Type="Int32" />
+    <Property Name="property_id" Type="Int32" />
+    <Property Name="referPrice" Type="Int32" />
+    <NavigationProperty Name="aacount" Relationship="Self.FK_referproperty_aacount" FromRole="referproperty" ToRole="aacount" />
+    <NavigationProperty Name="property" Relationship="Self.FK_referproperty_property" FromRole="referproperty" ToRole="property" />
+  </EntityType>
+  <Association Name="FK_company_aacount">
+    <End Role="aacount" Type="Self.aacount" Multiplicity="0..1" />
+    <End Role="company" Type="Self.company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aacount">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="company">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_offer_aacount">
+    <End Role="aacount" Type="Self.aacount" Multiplicity="0..1" />
+    <End Role="offer" Type="Self.offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aacount">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="offer">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_property_aacount">
+    <End Role="aacount" Type="Self.aacount" Multiplicity="0..1" />
+    <End Role="property" Type="Self.property" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aacount">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="property">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rating_aacount">
+    <End Role="aacount" Type="Self.aacount" Multiplicity="0..1" />
+    <End Role="rating" Type="Self.rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aacount">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="rating">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_refer_aacount">
+    <End Role="aacount" Type="Self.aacount" Multiplicity="0..1" />
+    <End Role="refer" Type="Self.refer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aacount">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="refer">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_referproperty_aacount">
+    <End Role="aacount" Type="Self.aacount" Multiplicity="0..1" />
+    <End Role="referproperty" Type="Self.referproperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aacount">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="referproperty">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_offer_property">
+    <End Role="property" Type="Self.property" Multiplicity="0..1" />
+    <End Role="offer" Type="Self.offer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="property">
+        <PropertyRef Name="property_id" />
+      </Principal>
+      <Dependent Role="offer">
+        <PropertyRef Name="property_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rating_property">
+    <End Role="property" Type="Self.property" Multiplicity="0..1" />
+    <End Role="rating" Type="Self.rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="property">
+        <PropertyRef Name="property_id" />
+      </Principal>
+      <Dependent Role="rating">
+        <PropertyRef Name="property_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_referproperty_property">
+    <End Role="property" Type="Self.property" Multiplicity="0..1" />
+    <End Role="referproperty" Type="Self.referproperty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="property">
+        <PropertyRef Name="property_id" />
+      </Principal>
+      <Dependent Role="referproperty">
+        <PropertyRef Name="property_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="propertyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="aacounts" EntityType="Self.aacount" />
+    <EntitySet Name="companies" EntityType="Self.company" />
+    <EntitySet Name="offers" EntityType="Self.offer" />
+    <EntitySet Name="properties" EntityType="Self.property" />
+    <EntitySet Name="ratings" EntityType="Self.rating" />
+    <EntitySet Name="refers" EntityType="Self.refer" />
+    <EntitySet Name="referproperties" EntityType="Self.referproperty" />
+    <AssociationSet Name="FK_company_aacount" Association="Self.FK_company_aacount">
+      <End Role="aacount" EntitySet="aacounts" />
+      <End Role="company" EntitySet="companies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_offer_aacount" Association="Self.FK_offer_aacount">
+      <End Role="aacount" EntitySet="aacounts" />
+      <End Role="offer" EntitySet="offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_property_aacount" Association="Self.FK_property_aacount">
+      <End Role="aacount" EntitySet="aacounts" />
+      <End Role="property" EntitySet="properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rating_aacount" Association="Self.FK_rating_aacount">
+      <End Role="aacount" EntitySet="aacounts" />
+      <End Role="rating" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_refer_aacount" Association="Self.FK_refer_aacount">
+      <End Role="aacount" EntitySet="aacounts" />
+      <End Role="refer" EntitySet="refers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_referproperty_aacount" Association="Self.FK_referproperty_aacount">
+      <End Role="aacount" EntitySet="aacounts" />
+      <End Role="referproperty" EntitySet="referproperties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_offer_property" Association="Self.FK_offer_property">
+      <End Role="property" EntitySet="properties" />
+      <End Role="offer" EntitySet="offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rating_property" Association="Self.FK_rating_property">
+      <End Role="property" EntitySet="properties" />
+      <End Role="rating" EntitySet="ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_referproperty_property" Association="Self.FK_referproperty_property">
+      <End Role="property" EntitySet="properties" />
+      <End Role="referproperty" EntitySet="referproperties" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

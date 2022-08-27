@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Property.Models.PropertyClass>
+@{
+    ViewBag.Title = "Home Page";
+}
+<section class="locations-1" id="locations">
+    <div class="locations py-5">
+        <div class="container py-lg-5 py-md-4 py-2">
+
+            <div class="row pt-md-5 pt-4">
+                @foreach (var file in ViewBag.Company)
+                {
+                   
+                    foreach  (var item in Model)
+                    {
+                         String img64 = Convert.ToBase64String(item.Image);
+                         String img64Url = string.Format("data:image/" + item.Image_Type + ";base64,{0}", img64);
+                        if (file.ID ==item.Company)
+                        {
+                            String img6 = Convert.ToBase64String(file.Image);
+                            String img6Url = string.Format("data:image/" + file.Image_Type + ";base64,{0}", img6);
+                            <div class="col-lg-4 col-md-6" style="margin-top:20px;">
+                                <a href="@Url.Action("Single", "Property", new { id = item.ID })">
+                                    <div class="box16">
+                                        <div class="rentext-listing-category">
+
+                                            <span style="background-color:black;">@item.Bed_Room Room</span>
+                                            <span style="background-color:black;">@item.Wash_Room Bath</span>
+                                            <span style="background-color:black;">@file.Name</span>
+                                            <img src="@img6Url" style="width:80px;height:80px;border-radius:10px;border:solid" align="right" />
+                                        </div>
+                                        <img class="img-fluid" src="@img64Url" alt="" style="width:350px;height:250px;">
+                                        <div class="box-content">
+                                            @{ 
+                                                int price = item.Price / 100000;
+                                            }
+                                            <h3 class="title">PKR @price Lac</h3>
+                                            <span class="post"> <b>@item.Marla</b> Marla <b>@item.Type</b> At  <b>@item.Location</b></span>
+                                        </div>
+                                     </div>
+                                </a>
+                            </div>
+                        }
+                        else if (item.Company==0 && file.ID !=item.Company)
+                        {
+                            <div class="col-lg-4 col-md-6" style="margin-top:20px;">
+                                <a href="@Url.Action("Single", "Property", new { id = item.ID })">
+                                    <div class="box16">
+                                        <div class="rentext-listing-category">
+                                            <span style="background-color:black;">@item.Bed_Room Room</span>
+                                            <span style="background-color:black;">@item.Wash_Room Bath</span>
+                                            <span style="background-color:black;">Owner: @item.OwnerName</span>
+                                        </div>
+                                        <img class="img-fluid" src="@img64Url" alt="" style="width:350px;height:250px;">
+                                        <div class="box-content">
+                                            @{
+                                                int price = item.Price / 100000;
+                                            }
+                                            <h3 class="title">PKR @price Lac</h3>
+                                            <span class="post"> <b>@item.Marla</b> Marla <b>@item.Type</b> At  <b>@item.Location</b></span>
+                                        </div>
+                                     </div>
+                                </a>
+                            </div>
+
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

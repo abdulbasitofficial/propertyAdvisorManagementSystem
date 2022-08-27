@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="propertyModelStoreContainer" CdmEntityContainer="propertyEntities">
+    <EntitySetMapping Name="aacounts">
+      <EntityTypeMapping TypeName="propertyModel.aacount">
+        <MappingFragment StoreEntitySet="aacount">
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="account_name" ColumnName="account_name" />
+          <ScalarProperty Name="account_contact" ColumnName="account_contact" />
+          <ScalarProperty Name="account_email" ColumnName="account_email" />
+          <ScalarProperty Name="account_password" ColumnName="account_password" />
+          <ScalarProperty Name="account_location" ColumnName="account_location" />
+          <ScalarProperty Name="account_type" ColumnName="account_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="propertyModel.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="company_image" ColumnName="company_image" />
+          <ScalarProperty Name="company_image_type" ColumnName="company_image_type" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="offers">
+      <EntityTypeMapping TypeName="propertyModel.offer">
+        <MappingFragment StoreEntitySet="offer">
+          <ScalarProperty Name="offer_id" ColumnName="offer_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="offer_price" ColumnName="offer_price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="properties">
+      <EntityTypeMapping TypeName="propertyModel.property">
+        <MappingFragment StoreEntitySet="property">
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="property_type" ColumnName="property_type" />
+          <ScalarProperty Name="property_location" ColumnName="property_location" />
+          <ScalarProperty Name="property_price" ColumnName="property_price" />
+          <ScalarProperty Name="property_bed" ColumnName="property_bed" />
+          <ScalarProperty Name="property_washroom" ColumnName="property_washroom" />
+          <ScalarProperty Name="property_size" ColumnName="property_size" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="property_image" ColumnName="property_image" />
+          <ScalarProperty Name="property_image_type" ColumnName="property_image_type" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ratings">
+      <EntityTypeMapping TypeName="propertyModel.rating">
+        <MappingFragment StoreEntitySet="rating">
+          <ScalarProperty Name="rating_id" ColumnName="rating_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="stars" ColumnName="stars" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="refers">
+      <EntityTypeMapping TypeName="propertyModel.refer">
+        <MappingFragment StoreEntitySet="refer">
+          <ScalarProperty Name="refer_id" ColumnName="refer_id" />
+          <ScalarProperty Name="advisor_id" ColumnName="advisor_id" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="referproperties">
+      <EntityTypeMapping TypeName="propertyModel.referproperty">
+        <MappingFragment StoreEntitySet="referproperty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="account_id" ColumnName="account_id" />
+          <ScalarProperty Name="property_id" ColumnName="property_id" />
+          <ScalarProperty Name="referPrice" ColumnName="referPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
